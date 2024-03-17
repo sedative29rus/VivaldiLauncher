@@ -11,3 +11,5 @@
 How to use:
 Place VivaldiLauncher.exe, the "Mods" folder and the flags.cfg file next to the Application folder of the browser.
 Place the JS-mods in the "Mods" folder. Add the necessary startup parameters to flags.cfg, separating them with spaces or line breaks.
+
+![Example](IMG.PNG)
