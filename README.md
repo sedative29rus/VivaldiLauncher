@@ -3,13 +3,13 @@
 
 Как использовать:
 Поместить VivaldiLauncher.exe, папку "Mods" и файл flags.cfg рядом с папкой Application браузера.
-Разместить в папке "Mods" JS-моды. Добавить во flags.cfg необходимые параметры запуска, разделяя их пробелами или переносом строки.
+Разместить в папке "Mods" JS-моды. Добавить во flags.cfg необходимые параметры запуска, разделяя их переносом строки. Ненужные в данный момент можно закомментировать "#"
 
 
 (Yet another) Vivaldi browser launcher. Automatically enables js modifications located in the "Mods" folder and starts the browser with the parameters specified in the flags.cfg file
 
 How to use:
 Place VivaldiLauncher.exe, the "Mods" folder and the flags.cfg file next to the Application folder of the browser.
-Place the JS-mods in the "Mods" folder. Add the necessary startup parameters to flags.cfg, separating them with spaces or line breaks.
+Place the JS-mods in the "Mods" folder. Add the necessary startup parameters to flags.cfg, separating them with line breaks. Unnecessary ones can be commented out with the # symbol.
 
 ![Example](IMG.PNG)
