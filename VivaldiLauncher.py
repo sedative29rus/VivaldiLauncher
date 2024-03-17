@@ -39,16 +39,17 @@ if window_html_path:
 
     # If Mods folder exists, create new mod copies and add them to script tags
     if os.path.exists(mods_path):
-        for mod_file in os.listdir(mods_path):
-            if mod_file.endswith(".js"):
-                src_file = os.path.join(mods_path, mod_file)
-                dst_file = os.path.join(window_html_dir, f"mod_{mod_file}")
-                shutil.copyfile(src_file, dst_file)
+        for root, dirs, files in os.walk(mods_path):
+            for file in files:
+                if file.endswith(".js"):
+                    src_file = os.path.join(root, file)
+                    dst_file = os.path.join(window_html_dir, f"mod_{file}")
+                    shutil.copyfile(src_file, dst_file)
 
-                js_file_url = f"mod_{mod_file}"
-                new_script_tag = soup.new_tag("script", src=js_file_url)
-                body_tag.append(new_script_tag)
-                body_tag.append("\n")
+                    js_file_url = f"mod_{file}"
+                    new_script_tag = soup.new_tag("script", src=js_file_url)
+                    body_tag.append(new_script_tag)
+                    body_tag.append("\n")
 
     # Save changes to window.html
     with open(window_html_path, "w") as file:
