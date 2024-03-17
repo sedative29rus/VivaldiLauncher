@@ -37,17 +37,18 @@ if window_html_path:
         if script_tag.has_attr("src") and script_tag["src"].startswith("mod_"):
             script_tag.decompose()
 
-    # Create new mod copies and add them to script tags
-    for mod_file in os.listdir(mods_path):
-        if mod_file.endswith(".js"):
-            src_file = os.path.join(mods_path, mod_file)
-            dst_file = os.path.join(window_html_dir, f"mod_{mod_file}")
-            shutil.copyfile(src_file, dst_file)
+    # If Mods folder exists, create new mod copies and add them to script tags
+    if os.path.exists(mods_path):
+        for mod_file in os.listdir(mods_path):
+            if mod_file.endswith(".js"):
+                src_file = os.path.join(mods_path, mod_file)
+                dst_file = os.path.join(window_html_dir, f"mod_{mod_file}")
+                shutil.copyfile(src_file, dst_file)
 
-            js_file_url = f"mod_{mod_file}"
-            new_script_tag = soup.new_tag("script", src=js_file_url)
-            body_tag.append(new_script_tag)
-            body_tag.append("\n")
+                js_file_url = f"mod_{mod_file}"
+                new_script_tag = soup.new_tag("script", src=js_file_url)
+                body_tag.append(new_script_tag)
+                body_tag.append("\n")
 
     # Save changes to window.html
     with open(window_html_path, "w") as file:
