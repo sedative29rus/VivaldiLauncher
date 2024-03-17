@@ -9,11 +9,13 @@ initial_path = os.path.join(os.getcwd(), "Application")
 mods_path = os.path.join(os.getcwd(), "Mods")
 flags_file = os.path.join(os.getcwd(), "flags.cfg")
 
+
 # Find window.html file
 def find_window_html(path):
     for root, dirs, files in os.walk(path):
         if "window.html" in files:
             return os.path.join(root, "window.html")
+
 
 window_html_path = find_window_html(initial_path)
 if window_html_path:
@@ -57,7 +59,12 @@ if window_html_path:
     if os.path.exists(flags_file):
         with open(flags_file, "r") as flags:
             flags_content = flags.read()
-            flags_list = re.findall(r'--\S+', flags_content)
+            flags_list = [
+                flag.strip()
+                for flag in flags_content.split("\n")
+                if not flag.strip().startswith("#")
+            ]
+            flags_list = [flag for flag in flags_list if flag]
         subprocess.Popen([vivaldi_path] + flags_list)
     # If flags.cfg doesn't exist
     else:
